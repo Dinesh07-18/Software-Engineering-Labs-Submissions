@@ -1,0 +1,10 @@
+BASELINE BUG REPRODUCTION (original repository code)
+parse_setpoint(None) -> TypeError: 'NoneType' object is not subscriptable
+parse_setpoint('') -> ValueError: could not convert string to float: ''
+parse_setpoint('21X') -> returned 21.0 (unexpected acceptance or no crash)
+average_temperature('') -> ValueError: could not convert string to float: ''
+average_temperature('1,,2') -> ValueError: could not convert string to float: ''
+average_temperature('nan,2') -> returned nan (unexpected acceptance or no crash)
+schedule_slot('24:00') -> returned 'day 0' (unexpected acceptance or no crash)
+schedule_slot('12:60') -> returned 'day 60' (unexpected acceptance or no crash)
+schedule_slot('7:3') -> returned 'day 3' (unexpected acceptance or no crash)

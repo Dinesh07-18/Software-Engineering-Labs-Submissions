@@ -1,0 +1,15 @@
+$ python deterministic_smoke_checks.py
+FIXED IMPLEMENTATION DETERMINISTIC SMOKE TESTS
+parse_setpoint('21.5C') -> 21.5 [PASS]
+parse_setpoint('70F') -> 21.1 [PASS]
+average_temperature('20.5,21,22.5') -> 21.333333333333332 [PASS]
+average_temperature('1e308,1e308') -> 1e+308 [PASS]
+schedule_slot('05:30') -> 'night 30' [PASS]
+schedule_slot('07:30') -> 'day 30' [PASS]
+parse_setpoint(None) -> ValueError: Setpoint must be a string ending in C or F. [PASS]
+parse_setpoint('21X') -> ValueError: Setpoint must be a number followed by C or F. [PASS]
+average_temperature('') -> ValueError: At least one non-empty temperature reading is required. [PASS]
+average_temperature('1,,2') -> ValueError: At least one non-empty temperature reading is required. [PASS]
+average_temperature('nan,2') -> ValueError: Temperature readings must be finite numbers. [PASS]
+schedule_slot('24:00') -> ValueError: Hour must be 00-23 and minute must be 00-59. [PASS]
+schedule_slot('12:60') -> ValueError: Hour must be 00-23 and minute must be 00-59. [PASS]
